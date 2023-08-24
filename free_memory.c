@@ -3,17 +3,17 @@
 /**
  * _freeAV - function that frees allocated memory
  * for array of strings and the array itself
- * @av: pointer to array of string
+ * @mem: pointer to array of string
  * Return: void
  */
-void _freeAV(char **av)
+void _freeAV(char **mem)
 {
 	int i;
 
-	for (i = 0; av[i]; i++)
+	for (i = 0; mem[i]; i++)
 	{
-		free(av[i]);
+		free(mem[i]);
 	}
-	free(av);
+	free(mem);
 }
 
