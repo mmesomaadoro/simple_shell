@@ -6,6 +6,6 @@
  */
 void _prompt(void)
 {
-	if (isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO) == 1)
 		write(STDOUT_FILENO, PROMPT, PROMPT_LEN);
 }

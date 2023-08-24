@@ -59,18 +59,18 @@ char *_strcat(char *dst, char *src)
 
 /**
  * _strcmp - function that compares two strings
- * @str1: first string to be compared
- * @str2: second string to be compared
+ * @s1: first string to be compared
+ * @s2: second string to be compared
  * Return: integer
  */
-int _strcmp(char *str1, char *str2)
+int _strcmp(char *s1, char *s2)
 {
 	int i;
 
-	for (i = 0; str1[i] != '\0' && str2[i] != '\0'; i++)
+	for (i = 0; s1[i] != '\0' && s2[i] != '\0'; i++)
 	{
-		if (str1[i] != str2[i])
-			return (str1[i] - str2[i]);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 	}
 
 	return (0);
