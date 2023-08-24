@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include <stddef.h>
+#include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
-#include <string.h>
 #include <errno.h>
 
 char *getPath(char *cmd);
+int _strlen(char *str);
+char *_strcpy(char *dst, char *src);
+char *_strcat(char *dst, char *src);
+int _strcmp(char *str1, char *str2);
+char *_strdup(char *src);
 
 /**
  * main - program start
@@ -35,7 +40,7 @@ int main(int argc, char **argv, char **env)
 		}
 		linePtr[line - 1] = '\0';
 
-		len = strlen(linePtr);
+		len = _strlen(linePtr);
 		while (len > 0 && (linePtr[len - 1] == ' ' || linePtr[len - 1] == '\t'))
 		{
 			linePtr[--len] = '\0';
@@ -55,17 +60,17 @@ int main(int argc, char **argv, char **env)
 			}
 			av[count] = NULL;
 
-			if (strcmp(av[0], "exit") == 0)
+			if (_strcmp(av[0], "exit") == 0)
 			{
 				free(av);
 				exit(ex);
 			}
 
-			if (strcmp(av[0], "env") == 0)
+			if (_strcmp(av[0], "env") == 0)
 			{
 				for (i = 0; env[i] != NULL; i++)
 				{
-					len = strlen(env[i]);
+					len = _strlen(env[i]);
 					write(STDOUT_FILENO, env[i], len);
 					write(STDOUT_FILENO, "\n", 1);
 				}

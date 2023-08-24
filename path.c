@@ -3,6 +3,12 @@
 #include <string.h>
 #include <unistd.h>
 
+int _strlen(char *str);
+char *_strcpy(char *dst, char *src);
+char *_strcat(char *dst, char *src);
+int _strcmp(char *str1, char *str2);
+char *_strdup(char *src);
+
 /**
  * getPath - function that gets the path of a command
  * @cmd: command to get it's path
@@ -14,7 +20,7 @@ char *getPath(char *cmd)
 
 	if (access(cmd, X_OK) == 0)
 	{
-		full_path = strdup(cmd);
+		full_path = _strdup(cmd);
 		if (full_path == NULL)
 			return (NULL);
 		return (full_path);
@@ -22,7 +28,7 @@ char *getPath(char *cmd)
 	path = getenv("PATH");
 	if (path == NULL)
 		return (NULL);
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	if (path_copy == NULL)
 		return (NULL);
 
@@ -30,15 +36,15 @@ char *getPath(char *cmd)
 	while (token != NULL)
 	{
 		/* Construct the full path by directory concat and command */
-		full_path = malloc(strlen(token) + strlen(cmd) + 2);
+		full_path = malloc(_strlen(token) + _strlen(cmd) + 2);
 		if (full_path == NULL)
 		{
 			free(path_copy);
 			return (NULL);
 		}
-		strcpy(full_path, token);
-		strcat(full_path, "/");
-		strcat(full_path, cmd);
+		_strcpy(full_path, token);
+		_strcat(full_path, "/");
+		_strcat(full_path, cmd);
 		/* Check if the constructed path exists */
 		if (access(full_path, F_OK) == 0)
 		{
