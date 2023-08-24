@@ -48,6 +48,12 @@ This C file displays a prompt message to the standard output (terminal)
 #### get_tokens.c
 This C file breaks down a string into smaller pieces called tokens
 
+#### getline.c
+This C file gets command line from user
+
+#### getenv.c
+This C file gets the environment variables
+
 #### env.c
 This C file displays environment variables to the standard output (terminal)
 
